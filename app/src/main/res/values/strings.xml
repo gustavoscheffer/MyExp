@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyExp</string>
+    <string name="tools">tools</string>
+    <string name="slideshow">slideshow</string>
+    <string name="gallery">galery</string>
+    <string name="importt">import</string>
+</resources>
