@@ -1,7 +1,21 @@
 <resources>
-    <string name="app_name">MyExp</string>
-    <string name="tools">tools</string>
-    <string name="slideshow">slideshow</string>
-    <string name="gallery">galery</string>
-    <string name="importt">import</string>
+    <string name="app_name">MyExpenses</string>
+    <string name="perfil">Perfil</string>
+    <string name="excluirConta">Excluir Conta</string>
+    <string name="sair">Sair</string>
+    <string name="settings">Configurações</string>
+    <string name="nome">Nome: </string>
+    <string name="senha">Senha: </string>
+    <string name="email">Email: </string>
+    <string name="salvar">Salvar</string>
+    <string name="alterarPerfilActivity">:: Alterar Perfil</string>
+    <string name="excluirContaActivity">:: Excluir Conta</string>
+    <string name="desc_image_perfil">Foto do Usuário</string>
+    <string name="mensagemExclusao">Ao confirmar a exclusão, todos os dados anteriormente salvos serão excluídos, assim como:
+     \n- Histórico
+     \n- Gráficos
+     \n- Preferências"
+     \n Este processo é IRREVERSÍVEL!
+
+    </string>
 </resources>
