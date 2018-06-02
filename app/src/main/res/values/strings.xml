@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">MyExpenses</string>
+    <string name="app_name">My Expenses</string>
+    <string name="emailhint">email@dom.com</string>
+    <string name="nome_hint">nome segundonome</string>
+    <string name="btnTrocaSenha">Troca Senha</string>
+    <string name="contentDescripFoto">A foto do usuario</string>
     <string name="perfil">Perfil</string>
     <string name="excluirConta">Excluir Conta</string>
     <string name="sair">Sair</string>
