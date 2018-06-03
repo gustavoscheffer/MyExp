@@ -16,7 +16,7 @@ Repositório utlizado para compartilhar o código do Trabalho Final.
 
 - Criar a tela Tela Principal (MainActivity)
 
-- Implementar os methodos de click nos nos icones
+- Implementar os methodos de click nos icones
 
 - Testar as Funcionalidades
 
