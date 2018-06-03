@@ -1,4 +1,5 @@
-# MyExp
+# MyExpenses
+Aplicativo de controle de gastos.
 
 Repositório utlizado para compartilhar o código do Trabalho Final.
 
