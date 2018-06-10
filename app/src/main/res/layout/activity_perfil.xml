@@ -17,8 +17,9 @@
             android:id="@+id/imageView2"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:adjustViewBounds="false"
             android:layout_gravity="center"
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/contentDescripFoto"
             app:srcCompat="@drawable/ic_user_profile" />
     </LinearLayout>
 
@@ -41,52 +42,7 @@
             android:layout_weight="4"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/email" />
-
-        <EditText
-            android:id="@+id/edtEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:ems="10"
-            android:focusable="false"
-            android:inputType="text"
-            android:visibility="visible" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textSenha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/senha" />
-
-        <Button
-            android:id="@+id/btnSenha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="Troca Senha" />
+            android:hint="@string/nome_hint" />
 
     </LinearLayout>
 
@@ -98,10 +54,53 @@
         <Button
             android:id="@+id/btnSalvar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:text="@string/salvar"
+            android:background="@drawable/btn_my_expensive"
+            android:textColor="@color/colorAccent"
             android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/textEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/email" />
+
+        <TextView
+            android:id="@+id/edtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:ems="8"
+            android:textSize="18dp"
+            android:hint="@string/emailhint"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnSenha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="@string/btnTrocaSenha"
+            android:background="@drawable/btn_my_expensive"
+            android:textColor="@color/colorAccent"/>
 
     </LinearLayout>
 

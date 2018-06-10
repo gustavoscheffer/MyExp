@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PerfilActivity"
+        <activity
+            android:name=".PerfilActivity"
             android:label="@string/alterarPerfilActivity"
             android:parentActivityName=".MainActivity">
 
@@ -25,7 +26,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ExcluiContaActivity"
+        <activity
+            android:name=".ExcluiContaActivity"
             android:label="@string/excluirContaActivity"
             android:parentActivityName=".MainActivity">
 
@@ -34,6 +36,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".CadastraGastoActivity"></activity>
     </application>
 
 </manifest>

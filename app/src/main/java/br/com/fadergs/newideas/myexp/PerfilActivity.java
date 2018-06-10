@@ -1,10 +1,12 @@
 package br.com.fadergs.newideas.myexp;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -52,6 +54,20 @@ public class PerfilActivity extends AppCompatActivity {
         txtEmail = findViewById(R.id.edtEmail);
         txtEmail.setHint(user.getEmail().toString());
 
+
+        //Implementa o click do botão para Salvar a troca do nome
+        btnSalvar = findViewById(R.id.btnSalvar);
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Troca o nome
+                trocaNomeFireBaseAuth(user);
+                //Esconde o teclado se o botão for apertado
+                escondeTeclado();
+            }
+        });
+
+        //Implementa o click do botão para a troca de senha
         btnSenha = findViewById(R.id.btnSenha);
         btnSenha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,41 +77,12 @@ public class PerfilActivity extends AppCompatActivity {
             }
         });
 
-        btnSalvar = findViewById(R.id.btnSalvar);
-        btnSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                        .setDisplayName(edtNome.getText().toString())
-                        .build();
-
-                // Atualiza o nome
-                user.updateProfile(profileUpdates)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d(TAG, "User profile updated.");
-                                }
-                            }
-                        });
-                // Atualiza o email
-                user.updateEmail(txtEmail.getHint().toString())
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d(TAG, "User email address updated.");
-                                }
-                            }
-                        });
-
-            }
-        });
     }
 
 
+
+
+    //Envia email para a troca de senha
     private void enviaEmailTrocaSenha(String emailAddress){
 
         auth.sendPasswordResetEmail(emailAddress)
@@ -104,9 +91,36 @@ public class PerfilActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Email sent.");
+                            Toast.makeText(PerfilActivity.this, "Email enviado para: "+ auth.getCurrentUser().getEmail().toString(), Toast.LENGTH_LONG).show();
+
                         }
                     }
                 });
+    }
+
+    //Troca o nome no FirebaseAuth
+    private void trocaNomeFireBaseAuth(FirebaseUser user){
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(edtNome.getText().toString())
+                .build();
+
+        // Atualiza o nome do user
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User profile updated.");
+                            Toast.makeText(PerfilActivity.this, "Nome alterado com sucesso!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
+
+    //Esconde o teclado
+    private void escondeTeclado(){
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(edtNome.getWindowToken(), 0);
     }
 
 }

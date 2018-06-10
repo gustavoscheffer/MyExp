@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#FFC20F</color>
+    <color name="colorPrimaryDark">#EFB509</color>
+    <color name="colorAccent">#A1282F</color>
+
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+
+    <!--Base color used.-->
+    <!--#FFC20F -> amarelo-->
+    <!--#EFB509 -> amarelo dark-->
+    <!--#A1282F -> vermelho-->
+    <!--#83282D -> vermelho dark-->
+    <!--#64192D -> vermelho real dark-->
+    <!--#F5FAF4 -> white-->
 </resources>

@@ -20,6 +20,12 @@
      \n- Gráficos
      \n- Preferências"
      \n Este processo é IRREVERSÍVEL!
-
     </string>
+
+    <string-array name="categoria_array">
+        <item>Serviços</item>
+        <item>Alimentação</item>
+        <item>Saude</item>
+        <item>Diversão</item>
+    </string-array>
 </resources>
