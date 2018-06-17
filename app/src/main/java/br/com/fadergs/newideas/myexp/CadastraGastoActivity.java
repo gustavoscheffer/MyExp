@@ -2,9 +2,11 @@ package br.com.fadergs.newideas.myexp;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,13 +20,25 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Map;
 
 public class CadastraGastoActivity extends AppCompatActivity {
 
+
+    private static final String TAG = "TesteDB" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +68,49 @@ public class CadastraGastoActivity extends AppCompatActivity {
                 String data = txtGastoDate.getText().toString();
 
                 // Novo Gasto
-                Gasto gasto = new Gasto(nome, valor, data, categoria);
+
+                Gasto gasto = new Gasto(nome, valor, convertDataToTimeStamp(data),categoria);
 
                 // Cadastra os gastos no banco
                 cadastraGastoNoBanco(gasto);
+
+                // Read from the database
+                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference myNewRef = FirebaseDatabase.getInstance().getReference("gastos").child(firebaseUser.getUid());
+                myNewRef.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        Gasto gasto = dataSnapshot.getValue(Gasto.class);
+
+                        ArrayList<Gasto> listaGasto = new ArrayList<Gasto>();
+                        listaGasto.add(gasto);
+
+                        Toast.makeText(CadastraGastoActivity.this, dataSnapshot.toString(), Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        Gasto gasto = dataSnapshot.getValue(Gasto.class);
+
+                        Toast.makeText(CadastraGastoActivity.this, gasto.getName(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
 
 
@@ -135,6 +188,30 @@ public class CadastraGastoActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+    }
+
+        /* Metodo que converte a data de string para timestamp
+       Sera usado para inserir a data no banco.*/
+    private long convertDataToTimeStamp(String strData) {
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
+        try {
+            date = formatter.parse(strData);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date.getTime();
+    }
+
+    /*Metodo que converte data (Timestamp) para data String(dd/MM/yyyy)
+      Este sera usado para converter o dado quando vem do banco.*/
+
+    private String convertTimeStampToDataBr(long dataTimeStamp){
+        DateFormat formatter =  new SimpleDateFormat("dd/MM/yyyy");
+        return formatter.format(dataTimeStamp);
     }
 
 

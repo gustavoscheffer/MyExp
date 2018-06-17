@@ -22,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // instancia do user no Firebase
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         //menuListener
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         // verifica se o user esta logado
         if (firebaseUser != null) {
 
-            btnCadastraGasto  = findViewById(R.id.btnCadastraGasto);
+            btnCadastraGasto = findViewById(R.id.btnCadastraGasto);
             btnCadastraGasto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -58,36 +59,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-
-//            //Teste de acesso a base de dados
-//            // Write a message to the database
-//            FirebaseDatabase database = FirebaseDatabase.getInstance();
-//            DatabaseReference myRef = database.getReference("gastos");
-////            myRef.child(firebaseUser.getUid()).setValue("Hello World Bitch!");
-//            myRef.child(firebaseUser.getUid()).child("gasto1").setValue(2.50);
-//            myRef.child(firebaseUser.getUid()).child("gasto2").setValue(3.50);
-//            myRef.child(firebaseUser.getUid()).child("gasto3").setValue(4.40);
-//            myRef.child(firebaseUser.getUid()).child("gasto4").setValue(5.30);
-
-
-
-//            // Read from the database
-//            myRef.child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    // This method is called once with the initial value and again
-//                    // whenever data at this location is updated.
-//                    String value = dataSnapshot.getValue(String.class);
-//                    Log.d(TAG, "Value is: " + value);
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError error) {
-//                    // Failed to read value
-//                    Log.w(TAG, "Failed to read value.", error.toException());
-//                }
-//            });
-
+            //Vai para lista de Gastos
+            Button btnGotoListaGastos  = findViewById(R.id.btnListaGastos);
+            btnGotoListaGastos.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, ListaDeGastosActivity.class));
+                }
+            });
 
         } else {
             firebaseSigin();

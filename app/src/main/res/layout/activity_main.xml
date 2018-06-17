@@ -16,24 +16,40 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:padding="20dp">
 
                 <Button
                     android:id="@+id/btnCadastraGasto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="242dp"
+                    android:layout_height="125dp"
                     android:text="Cadastro de Gastos" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <Button
+                    android:id="@+id/btnListaGastos"
+                    android:layout_width="184dp"
+                    android:layout_height="132dp"
+                    android:text="Lista de Gastos" />
+
+            </LinearLayout>
         </LinearLayout>
+
+
 
 
     </FrameLayout>

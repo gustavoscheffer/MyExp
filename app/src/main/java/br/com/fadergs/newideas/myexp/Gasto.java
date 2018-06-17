@@ -2,7 +2,7 @@ package br.com.fadergs.newideas.myexp;
 
 import com.google.firebase.database.Exclude;
 
-import java.util.Date;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +12,7 @@ public class Gasto {
 
     private String name;
     private double value;
-    private String date;
+    private long date; //timestamp format
     private String categoria;
 
     // Construtor default
@@ -21,7 +21,7 @@ public class Gasto {
     }
 
     //Construtor full
-    public Gasto(String name, double value, String date, String categoria) {
+    public Gasto(String name, double value, long date, String categoria) {
         this.name = name;
         this.value = value;
         this.date = date;
@@ -38,5 +38,37 @@ public class Gasto {
         result.put("categoria", categoria);
 
         return result;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

@@ -36,7 +36,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CadastraGastoActivity"></activity>
+        <activity android:name=".CadastraGastoActivity" />
+        <activity android:name=".ListaDeGastosActivity"></activity>
     </application>
 
 </manifest>
